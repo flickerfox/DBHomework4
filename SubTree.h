@@ -7,18 +7,25 @@
 
 using namespace std;
 
-class Subtree
+class SubTree
 {
 private:
 	vector<Node>VertexSet;
 	vector<int>Dimension;
 	vector<vector<Node> >CandiSet;
 public:
-	Subtree();
-	virtual ~Subtree();
+	SubTree();
+	virtual ~SubTree();
 
 	void setVertexSet(vector<Node>vertexset);
-	vec
+	vector<Node> getVertexSet();
+
+	void setDimension(vector<int>dimension);
+	vector<int> getDimension();
+
+	void setCandiSet(vector<vector<Node> >candiset);
+	vector<vector<Node> > getCandiSet();
+
 };
 
 
