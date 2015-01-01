@@ -11,10 +11,10 @@ class Node
 {
 private:
 	int Id;
-	int Degree;
+	int* Degree;
 	string AuthorName;
-	vector<int>AdjList;
-	vector<int>EdgeList;
+	vector<int>* AdjList;
+	vector<int>* EdgeList;
 public:
 	Node();
 	virtual ~Node();
@@ -22,16 +22,17 @@ public:
 	void setId(int id);
 	int getId();
 
-	void setDegree(int degree);
-	int getDegree();
+	void setDegree(int* degree);
+	void increaseDegree(int inc);
+	int* getDegree();
 
 	void setAuthorName(string authorname);
 	string getAuthorName();
 
-	void setAdjList(vector<int>adjlist);
-	vector<int>getAdjList();
+	void setAdjList(vector<int>* adjlist);
+	vector<int>* getAdjList();
 
-	void setEdgeList(vector<int>edgelist);
-	vector<int>getEdgeList();
+	void setEdgeList(vector<int>* edgelist);
+	vector<int>* getEdgeList();
 };
 #endif

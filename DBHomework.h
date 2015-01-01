@@ -5,12 +5,15 @@
 #include "Edge.h"
 #include "Node.h"
 
-extern Node* nodesList;
-extern Edge* edgesList;
+extern Node** nodesList;
+extern Edge** edgesList;
 
 using namespace std;
 
-bool init(string path);
+void init();
+bool readAuthorFromFile(string path);
+bool readPubFromFile(string path);
+bool readRelationFromFile(string path);
 #endif
 
 

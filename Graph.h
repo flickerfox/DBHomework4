@@ -5,8 +5,8 @@
 #include"Node.h"
 #include"Edge.h"
 
-extern Node* nodesList;
-extern Edge* edgesList;
+extern Node** nodesList;
+extern Edge** edgesList;
 
 class Graph
 {

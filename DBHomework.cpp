@@ -5,17 +5,37 @@
 #include "Graph.h"
 #include "DBHomework.h"
 
-Node* nodesList;
-Edge* edgesList;
+Node** nodesList;
+Edge** edgesList;
 
 using namespace std;
 
+void releaseMemory()
+{
+	for (int i = 0;i<779752;i++)
+	{
+		if (nodesList[i] != NULL)
+		{
+			delete nodesList[i];
+		}
+	}
+	for (int i = 0;i<1050479;i++)
+	{
+		if (edgesList[i] != NULL)
+		{
+			delete edgesList[i];
+		}
+	}
+	delete[] nodesList, edgesList;
+}
+
 int main()
 {
-	nodesList = new Node[38489];
-	edgesList = new Edge[43948];
+	string path = "C:/programs/db4/dbhomework/";
+	init();
+	readAuthorFromFile(path);
+	readPubFromFile(path);
+	readRelationFromFile(path);
 
-	init("C:/study/Êý¾Ý¿â¸ÅÂÛ/618506165_6_Project4/dblp/dblp-article");
-
-	delete[] nodesList, edgesList;
+	releaseMemory();
 }
