@@ -5,6 +5,9 @@
 #include"Node.h"
 #include"Edge.h"
 
+extern Node* nodeList;
+extern Edge* edgeList;
+
 class Graph
 {
 private:

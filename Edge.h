@@ -3,6 +3,8 @@
 
 #include<iostream>
 #include<vector>
+#include "Node.h"
+#include "DBHomework.h"
 using namespace std;
 
 class Edge

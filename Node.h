@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include "Edge.h"
+#include "DBHomework.h"
 
 using namespace std;
 
