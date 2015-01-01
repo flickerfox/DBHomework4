@@ -3,6 +3,7 @@
 #include <fstream>
 #include "Edge.h"
 #include "Node.h"
+#include "DBHomework.h"
 using namespace std;
 
 bool init(string path)
@@ -17,5 +18,6 @@ bool init(string path)
 	while(!inputFile.eof())                                         //先把所有数据读入一个字符串数组中
 	{
 		inputFile>>line;
+		cout<<line;
 	}
 }

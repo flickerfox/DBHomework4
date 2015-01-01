@@ -1,11 +1,16 @@
-#ifndef DBHOMEWORK_H
-#define DBHOMEWORK_H
+#ifndef _INIT
+#define _INIT
+
+#include <string>
+#include "Edge.h"
+#include "Node.h"
+
+extern Node* nodesList;
+extern Edge* edgesList;
+
+using namespace std;
 
 bool init(string path);
-
-Node* nodeList;
-Edge* edgeList;
-
 #endif
 
 
