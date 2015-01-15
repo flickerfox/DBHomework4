@@ -8,14 +8,14 @@ using namespace std;
 
 void init()
 {
-	nodesList = new Node*[779752];
-	edgesList = new Edge*[1050479];
+	nodesList = new Node*[nodeNum];
+	edgesList = new Edge*[edgeNum];
 
-	for (int i = 0;i<779752;i++)
+	for (int i = 0;i<nodeNum;i++)
 	{ 
 		nodesList[i] = NULL;
 	}
-	for (int i = 0;i<1050479;i++)
+	for (int i = 0; i<edgeNum; i++)
 	{
 		edgesList[i] = NULL;
 	}	
@@ -95,6 +95,12 @@ bool readPubFromFile(string path)
 			pub->getAttribute()->push_back(pubInfo1);
 			pub->increaseDe(1);
 		}
+		else
+		{
+			pub->getTag()->push_back(false);
+			pub->getAttribute()->push_back("NULL");
+			pub->increaseDe(1);
+		}
 		//if (pubInfo2 != "null")	//month
 		//{
 		//	pub.getTag().push_back(true);
@@ -105,6 +111,12 @@ bool readPubFromFile(string path)
 		{
 			pub->getTag()->push_back(true);
 			pub->getAttribute()->push_back(pubInfo3);
+			pub->increaseDe(1);
+		}
+		else
+		{
+			pub->getTag()->push_back(false);
+			pub->getAttribute()->push_back("NULL");
 			pub->increaseDe(1);
 		}
 		edgesList[pubID] = pub;
@@ -121,8 +133,8 @@ bool readRelationFromFile(string path)
 		return false;
 	}
 
-	vector<int>** relationList = new vector<int>*[1050479];
-	for (int i = 0;i < 1050479;i++)
+	vector<int>** relationList = new vector<int>*[edgeNum];
+	for (int i = 0;i < edgeNum;i++)
 	{
 		relationList[i] = NULL;
 	}
@@ -145,22 +157,39 @@ bool readRelationFromFile(string path)
 		relationList[pubID]->push_back(authorID);	// 添加同一个publication的作者
 	}
 
-	for (int i = 0;i < 1050479;i++)	//遍历publication
+	for (int i = 0;i < edgeNum;i++)	//遍历publication
 	{
 		if (relationList[i] != NULL)
 		{
-			for (int j = 0;j < relationList[i]->size()-1;j++)	//遍历publication中的author
+			for (int j = 0;j < relationList[i]->size();j++)	//遍历publication中的author
 			{
 				edgesList[i]->getNodeList()->push_back(relationList[i]->at(j));	//添加edge里的nodelist
+				nodesList[relationList[i]->at(j)]->getEdgeList()->push_back(i);
 				for (int k = j+1;k < relationList[i]->size();k++)	//添加node里的相关信息（每个关系的两个点都添加）
 				{
 					nodesList[relationList[i]->at(j)]->getAdjList()->push_back(relationList[i]->at(k));
-					nodesList[relationList[i]->at(j)]->getEdgeList()->push_back(i);
-					nodesList[relationList[i]->at(j)]->increaseDegree(1);
+					//nodesList[relationList[i]->at(j)]->getEdgeList()->push_back(i);
+					
+					for (int s = 0; s < edgesList[i]->getDe(); s++)
+					{
+						if (edgesList[i]->getTag()->at(s)==true)
+							nodesList[relationList[i]->at(j)]->increaseDegree(1,s);
+						
+					}
+					
 
 					nodesList[relationList[i]->at(k)]->getAdjList()->push_back(relationList[i]->at(j));
-					nodesList[relationList[i]->at(k)]->getEdgeList()->push_back(i);
-					nodesList[relationList[i]->at(k)]->increaseDegree(1);
+					//nodesList[relationList[i]->at(k)]->getEdgeList()->push_back(i);
+					for (int s = 0; s < edgesList[i]->getDe(); s++)
+					{
+						if (edgesList[i]->getTag()->at(s) == true)
+							nodesList[relationList[i]->at(k)]->increaseDegree(1, s);
+						/*else
+						{
+							cout << i << endl;
+						}*/
+					}
+					
 				}
 			}
 			

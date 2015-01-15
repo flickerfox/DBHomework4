@@ -11,7 +11,7 @@ class Node
 {
 private:
 	int Id;
-	int* Degree;
+	vector<int>* Degree;
 	string AuthorName;
 	vector<int>* AdjList;
 	vector<int>* EdgeList;
@@ -22,9 +22,9 @@ public:
 	void setId(int id);
 	int getId();
 
-	void setDegree(int* degree);
-	void increaseDegree(int inc);
-	int* getDegree();
+	void setDegree(vector<int>* degree);
+	void increaseDegree(int inc,int demension);
+	vector<int>* getDegree();
 
 	void setAuthorName(string authorname);
 	string getAuthorName();

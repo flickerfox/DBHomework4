@@ -1,5 +1,5 @@
-#ifndef _INIT
-#define _INIT
+#ifndef _DBHOMEWORK
+#define _DBHOMEWORK
 
 #include <string>
 #include <vector>
@@ -9,6 +9,15 @@
 
 extern Node** nodesList;
 extern Edge** edgesList;
+
+extern int edgeNum;
+extern int nodeNum;
+
+extern int minnumNode;
+extern int minDimension;
+extern double minDensity;
+extern int minsimilarity;
+extern double minRedundancy;
 
 using namespace std;
 

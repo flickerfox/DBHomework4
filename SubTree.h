@@ -13,6 +13,8 @@ private:
 	vector<int>* VertexSet;
 	vector<int>* Dimension;
 	vector<vector<int> >* CandiSet;
+	vector<vector<string> >* Edgesimilarity;
+	double Quality;
 public:
 	SubTree();
 	virtual ~SubTree();
@@ -25,6 +27,12 @@ public:
 
 	void setCandiSet(vector<vector<int> >* candiset);
 	vector<vector<int> >* getCandiSet();
+
+	void setEdgesimilarity(vector<vector<string> >* edgesimilarity);
+	vector<vector<string> >* getEdgesimilarity();
+
+	void setQuality(double quality);
+	double getQuality();
 
 };
 

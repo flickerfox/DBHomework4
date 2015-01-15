@@ -9,17 +9,21 @@ using namespace std;
 class Cluster
 {
 private:
-	vector<Node>VertexSet;
-	vector<int>Dimension;
+	vector<int>* VertexSet;
+	vector<int>* Dimension;
+	double Quality;
 public:
 	Cluster();
 	virtual ~Cluster();
 	
-	void setVertexSet(vector<Node>vertexSet);
-	vector<Node> getVertexSet();
+	void setVertexSet(vector<int>* vertexSet);
+	vector<int>* getVertexSet();
 
-	void setDimension(vector<int>dimension);
-	vector<int> getDimension();
+	void setDimension(vector<int>* dimension);
+	vector<int>* getDimension();
+
+	void setQuality(double quality);
+	double getQuality();
 };
 
 #endif
